@@ -225,7 +225,7 @@
       UpdateSong: function () {
         alert('update Song')
         const self = this
-        var data = `Songid=${this.editid}&Songname=${this.Songname}&price=${this.price}&songType=${this.Type}&Albumid=${this.AlbumId}&lang=${this.Lang}&SingerId=${this.SingerId}&SongPathKey=${this.SongPath}&LyricsKey=${this.Lyrics}&SongImageKey=${this.SongImage}`
+        var data = `Songid=${this.editid}&Songname=${this.Songname}&price=${this.price}&songType=${this.Type}&Albumid=${this.albumId}&lang=${this.Lang}&SingerId=${this.SingerId}&SongPathKey=${this.SongPath}&LyricsKey=${this.Lyrics}&SongImageKey=${this.SongImage}`
         console.log('update song')
         console.log(data)
         API.request('post', '/admin/songs/update2', data).then(function (res) {
