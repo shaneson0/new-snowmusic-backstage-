@@ -5,7 +5,7 @@
 
 
     <div class="row">
-      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute'></pagenation>
+      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute' v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
       <div class="col-md-12">
         <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
         <router-link to="/updateSong"><button type="submit" class="btn btn-primary pull-right">增加歌曲</button></router-link>
@@ -15,7 +15,7 @@
   </div>
 
 
-
+<!--<button-counter v-on:increment="incrementTotal"></button-counter>-->
 
 
 </template>
@@ -40,30 +40,44 @@
       }
     },
     created: function () {
-      var self = this
-      const data = 'limit=10'
-      API.request('post', '/admin/songs/list', data).then(function (res) {
-        const Data = res.data.data
-        self.AllNum1 = Data.all
-        self.finish1 = Data.finish
-        const Songs = Data.songs
-        const TempArray = []
-        for (var i = 0; i < Songs.length; i++) {
-          const Song = Songs[i]
-          const temp = {
-            image: Songs[i].image,
-            id: Song.songid,
-            lists: [Song.songname, Song.type, Song.lang, Song.singername, Song.albumname, Song.price]
-          }
-          TempArray[i] = temp
-        }
-        self.values = TempArray
-      })
+      this.getSongsList(10, '', 0)
     },
     mounted () {
       this.$nextTick(() => {
         $('#example1').DataTable()
       })
+    },
+    methods: {
+      changepage1: function (from) {
+        console.log(from)
+        this.getSongsList(10, '', from)
+      },
+      searchfunction1: function (Msg) {
+        this.getSongsList(10, Msg, 0)
+      },
+      getSongsList: function (limit, vague, from) {
+        let data = `table=songslib&keyname=songname&queryfiles=songname,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
+        console.log(data)
+        var self = this
+        API.request('post', '/admin/vague/query', data).then(function (res) {
+          console.log(res)
+          const Data = res.data.data
+//          self.AllNum1 = Data.all
+//          self.finish1 = Data.finish
+          const Songs = Data.res
+          const TempArray = []
+          for (var i = 0; i < Songs.length; i++) {
+            const Song = Songs[i]
+            const temp = {
+              image: Song.image,
+              id: Song.songid,
+              lists: [Song.songname, Song.type, Song.lang, Song.singername, Song.albumname, Song.price]
+            }
+            TempArray.push(temp)
+          }
+          self.values = TempArray
+        })
+      }
     }
   }
 </script>

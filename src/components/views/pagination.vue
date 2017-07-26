@@ -11,16 +11,13 @@
 
         <div class="box-tools">
           <div class="input-group input-group-sm pull-right" style="width: 150px">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"/>
+            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" v-model="searchvalue"/>
             <div class="input-group-btn">
-              <button type="submit" class="btn btn-default">
+              <button type="submit" class="btn btn-default" v-on:click="searchfunction">
                 <i class="fa fa-search"></i>
               </button>
             </div>
           </div>
-
-
-
           <div class="input-group input-group-sm pull-right" style="width: 150px">
             <select class="form-control">
               <option>全部</option>
@@ -65,7 +62,6 @@
                 <i class="fa fa-fw fa-eye"></i>
               </div>
               <div class="col-md-3 col-sm-4">
-                {{value.id}}
                 <router-link :to="{ path: EditRoute , query: { editid: value.id } }"><i class="fa fa-fw fa-edit"></i></router-link>
                 <!--<router-link :to="EditRoute"><i class="fa fa-fw fa-edit"></i></router-link>-->
               </div>
@@ -74,29 +70,21 @@
             </td>
           </tr>
 
-
-
           </tbody>
         </table>
       </div>
 
       <div class="col-md-12">
-
-        <ul class="pagination pull-right">
-          <li><a href="#">&laquo;</a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li class="disabled"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">&raquo;</a></li>
+        <ul class="pagination pull-right" >
+        <!--<ul >-->
+          <li><a  v-on:click="changePage(prepage)">&laquo;</a></li>
+          <li v-for="page1 in pagearray">
+            <!--{{page1}}-->
+            <a v-on:click="changePage(page1)">{{page1}}</a>
+          </li>
+          <li><a  v-on:click="changePage(nextpage)">&raquo;</a></li>
         </ul>
-
-
-
       </div>
-
-
 
       <div class="box-footer">
       </div>
@@ -110,8 +98,6 @@
 </template>
 
 
-
-
 <script>
   export default{
     name: 'pagenation',
@@ -123,13 +109,47 @@
     },
     data: function () {
       return {
+        searchvalue: '',
+        pagesize: 10,
+        prepage: 1,
+        page: 1,
+        nextpage: 6,
+        pagearray: [1, 2, 3, 4, 5]
       }
     },
     watch: {
+      page: {
+        handler: function (val, oldval) {
+          if (val === 1) {
+            this.page = this.prepage = val
+          } else {
+            this.prepage = val - 1
+            this.page = val
+          }
+          this.nextpage = val + 1
+          let TempArray = []
+          for (var i = val; i < val + 5; i++) {
+            TempArray.push(i)
+          }
+          this.pagearray = TempArray
+        }
+      },
       values1: {
         handler: function (val, oldval) {
           console.log('values is change')
         }
+      }
+    },
+    methods: {
+      changePage: function (index) {
+        console.log('change page')
+        this.page = index
+        console.log(this.page)
+        this.$emit('changePage', (this.page - 1) * this.pagesize)
+      },
+      searchfunction: function () {
+        this.page = 1
+        this.$emit('searchfunction', this.searchvalue)
       }
     }
   }
