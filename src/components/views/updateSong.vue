@@ -58,6 +58,8 @@
                     {{ option.text }}
                   </option>
                 </select>
+
+
               </div>
               <div class="form-group">
                 <label>歌曲</label><small>（需要按照歌名上传之后才可以选择）</small>
