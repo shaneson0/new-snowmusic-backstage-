@@ -15,9 +15,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "ali-oss": "^4.8.0",
     "axios": "^0.15.3",
     "babel-runtime": "^5.8.0",
     "chart.js": "2.3.0",
+    "co": "^4.6.0",
     "datatables.net": "^1.10.11",
     "datatables.net-bs": "^1.10.11",
     "faker": "^3.1.0",

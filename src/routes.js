@@ -10,6 +10,14 @@ import SettingView from './components/views/Setting.vue'
 import AccessView from './components/views/Access.vue'
 import ServerView from './components/views/Server.vue'
 import ReposView from './components/views/Repos.vue'
+import ManagerView from './components/views/Manager.vue'
+import SingerView from './components/views/Singer.vue'
+import SongsView from './components/views/Songs.vue'
+import MVView from './components/views/MV.vue'
+import AlbumView from './components/views/Album.vue'
+import pageView from './components/views/pagination.vue'
+import updateSongView from './components/views/updateSong.vue'
+import uploadView from './components/views/upload.vue'
 
 // Routes
 const routes = [
@@ -57,6 +65,38 @@ const routes = [
         component: ReposView,
         name: 'Repository',
         meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'Manager',
+        component: ManagerView,
+        name: 'Manager'
+      }, {
+        path: 'Singer',
+        component: SingerView,
+        name: 'Singer'
+      }, {
+        path: 'Songs',
+        component: SongsView,
+        name: 'Songs'
+      }, {
+        path: 'MV',
+        component: MVView,
+        name: 'MV'
+      }, {
+        path: 'Album',
+        component: AlbumView,
+        name: 'Album'
+      }, {
+        path: 'page',
+        component: pageView,
+        name: 'page'
+      }, {
+        path: 'updateSong',
+        component: updateSongView,
+        name: 'updateSong'
+      }, {
+        path: 'upload',
+        component: uploadView,
+        name: 'upload'
       }
     ]
   }, {
