@@ -14,10 +14,16 @@ import ManagerView from './components/views/Manager.vue'
 import SingerView from './components/views/Singer.vue'
 import SongsView from './components/views/Songs.vue'
 import MVView from './components/views/MV.vue'
+import updateMVView from './components/views/updateMV.vue'
 import AlbumView from './components/views/Album.vue'
 import pageView from './components/views/pagination.vue'
 import updateSongView from './components/views/updateSong.vue'
 import uploadView from './components/views/upload.vue'
+import singerDetailView from './components/views/singerDetail.vue'
+import albumDetailView from './components/views/albumDetail.vue'
+import MVDetailView from './components/views/MVDetail.vue'
+import songDetailView from './components/views/songDetail.vue'
+import rankView from './components/views/rank.vue'
 
 // Routes
 const routes = [
@@ -94,9 +100,33 @@ const routes = [
         component: updateSongView,
         name: 'updateSong'
       }, {
+        path: 'updateMV',
+        component: updateMVView,
+        name: 'updateMV'
+      }, {
         path: 'upload',
         component: uploadView,
         name: 'upload'
+      }, {
+        path: 'singerDetail',
+        component: singerDetailView,
+        name: 'singerDetailView'
+      }, {
+        path: 'albumDetail',
+        component: albumDetailView,
+        name: 'albumDetail'
+      }, {
+        path: 'MVDetail',
+        component: MVDetailView,
+        name: 'MVDetail'
+      }, {
+        path: 'songDetail',
+        component: songDetailView,
+        name: 'songDetail'
+      }, {
+        path: 'rank',
+        component: rankView,
+        name: 'rank'
       }
     ]
   }, {
