@@ -7,11 +7,11 @@
           <h3>{{MVInfo.mvname}}</h3>
         </div>
         <div class="col-md-6" style="position: relative; margin-top: 20px">
-          <button type="button" class="btn-info">添加歌曲</button>
-          <button type="button" class="btn-info">添加专辑</button>
-          <button type="button" class="btn-info">添加MV</button>
-          <button type="button" class="btn-danger">删除</button>
-          <button type="button" class="btn-warning">编辑</button>
+          <button type="button" class="btn btn-info">添加歌曲</button>
+          <button type="button" class="btn btn-info">添加专辑</button>
+          <button type="button" class="btn btn-info">添加MV</button>
+          <button type="button" class="btn btn-danger">删除</button>
+          <button type="button" class="btn btn-warning">编辑</button>
         </div>
       </div>
       <div class="row">

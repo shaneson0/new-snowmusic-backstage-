@@ -64,8 +64,8 @@
           <input id="selectedAll" type="checkbox" class="btn-warning" style="margin-top:25px" v-model="checked"
                  @click="checkedAll">
           <label for="selectedAll">全选</label>
-          <button class="btn-danger" style="margin-top:25px">删除</button>
-          <button class="btn-info" style="margin-top:25px">添加歌曲</button>
+          <button class="btn btn-danger" style="margin-top:25px">删除</button>
+          <button class="btn btn-info" style="margin-top:25px">添加歌曲</button>
         </div>
         <div class="col-md-7">
           <ul class="pagination pull-right">
