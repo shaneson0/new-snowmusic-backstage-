@@ -1,13 +1,13 @@
 <template>
   <div id="singerDetail" class="container">
     <p>这是MV详情页</p>
-    <div class="my-content container">
+    <div class="container">
       <div class="row">
         <div class="col-md-6">
           <h3>排行榜</h3>
         </div>
         <div class="col-md-4" style="position: relative; margin-top: 20px">
-          <button type="button" class="btn-info pull-right">添加歌曲</button>
+          <button type="button" class="btn btn-info pull-right">添加歌曲</button>
         </div>
       </div>
       <div class="row">
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="my-main-container">
+    <div>
       <div class="input-group input-group-sm" style="width: 80%; margin-bottom: 10px;">
         <input type="text" name="table_search" class="form-control" placeholder="Search"/>
         <div class="input-group-btn">
@@ -25,9 +25,9 @@
           </button>
         </div>
       </div>
-      <table class="table table-hover text-center table-responsive" style="width: 80%;">
+      <table class="table table-striped table-hover text-center table-responsive" style="width: 80%;">
         <thead>
-        <tr class="success">
+        <tr>
           <th>选择</th>
           <th>歌名</th>
           <th>歌手</th>
@@ -64,8 +64,8 @@
           <input id="selectedAll" type="checkbox" class="btn-warning" style="margin-top:25px" v-model="checked"
                  @click="checkedAll">
           <label for="selectedAll">全选</label>
-          <button class="btn btn-danger" style="margin-top:25px">删除</button>
-          <button class="btn btn-info" style="margin-top:25px">添加歌曲</button>
+          <button class="btn btn-danger">删除</button>
+          <button class="btn btn-info">添加歌曲</button>
         </div>
         <div class="col-md-7">
           <ul class="pagination pull-right">
@@ -162,14 +162,3 @@
   }
 </script>
 
-<style>
-  .my-main-container {
-    margin: 0 auto;
-    background: #c4e3f3;
-  }
-
-  .my-singer-info p {
-    margin-top: 15px;
-  }
-
-</style>

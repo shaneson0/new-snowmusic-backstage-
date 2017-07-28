@@ -74,7 +74,6 @@
 <style>
   .my-main-container{
     margin: 0 auto;
-    background: #c4e3f3;
   }
   .my-singer-info p{
     margin-top: 15px;

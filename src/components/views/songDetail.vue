@@ -122,7 +122,6 @@
   .my-main-container{
     margin: 0 auto;
     padding: 20px;
-    background: #c4e3f3;
   }
   .my-singer-info p{
     margin-top: 15px;
