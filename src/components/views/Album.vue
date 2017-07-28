@@ -1,7 +1,8 @@
 <template>
   <!-- Main content -->
   <div class="row center-block">
-    <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values"></pagenation>
+    <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute' :DetailRoute="detailRoute"
+                v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
     <div class="col-md-12">
       <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
       <router-link to="/updateAlbum">
@@ -26,29 +27,43 @@
       return {
         hasimage: 1,
         keys: ['名字', '歌手', '歌曲数', '发布时间', '新专辑', '操作'],
-        values: []
+        values: [],
+        editRoute: '/updateAlbum',
+        detailRoute: '/albumDetail'
+      }
+    },
+    methods: {
+      changepage1: function () {
+        this.getAlbumList()
+      },
+      searchfunction1: function () {
+        this.getAlbumList()
+      },
+      getAlbumList: function () {
+        var self = this
+        const data = 'limit=10'
+        API.request('post', '/admin/album/list', data).then(function (res) {
+          const Data = res.data.data
+          self.AllNum1 = Data.all
+          self.finish1 = Data.finish
+          const alblums = Data.albums
+          console.log(Data)
+          const TempArray = []
+          for (var i = 0; i < alblums.length; i++) {
+            const Album = alblums[i]
+            const temp = {
+              image: alblums[i].image,
+              lists: [Album.albumname, Album.singername, Album.songsnum, Album.create_ts, '是'],
+              id: Album.albumid
+            }
+            TempArray[i] = temp
+          }
+          self.values = TempArray
+        })
       }
     },
     created: function () {
-      var self = this
-      const data = 'limit=10'
-      API.request('post', '/admin/album/list', data).then(function (res) {
-        const Data = res.data.data
-        self.AllNum1 = Data.all
-        self.finish1 = Data.finish
-        const alblums = Data.albums
-        console.log(Data)
-        const TempArray = []
-        for (var i = 0; i < alblums.length; i++) {
-          const Album = alblums[i]
-          const temp = {
-            image: alblums[i].image,
-            lists: [Album.albumname, Album.singername, Album.songsnum, Album.create_ts, '是']
-          }
-          TempArray[i] = temp
-        }
-        self.values = TempArray
-      })
+      this.getAlbumList()
     },
     mounted () {
       this.$nextTick(() => {
