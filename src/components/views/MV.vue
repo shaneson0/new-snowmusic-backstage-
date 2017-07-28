@@ -2,11 +2,11 @@
   <!-- Main content -->
   <div class="row center-block">
 
-    <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute'
+    <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute' :DetailRoute="detailRoute"
                 v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
     <div class="col-md-12">
       <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
-      <router-link to="/songDetail">
+      <router-link to="/updateMV">
         <button type="submit" class="btn btn-primary pull-right">增加MV</button>
       </router-link>
     </div>
@@ -30,12 +30,12 @@
         hasimage: 1,
         keys: ['名字', '歌手', '语系', '专辑', '发布时间', '播放次数', '精选', '操作'],
         values: [],
-        editRoute: '/updateMV'
+        editRoute: '/updateMV',
+        detailRoute: '/MVDetail'
       }
     },
     methods: {
       changepage1: function (from) {
-        alert(from)
         this.getMVsList(10, from, '')
       },
       searchfunction1: function (Msg) {
@@ -44,19 +44,20 @@
       getMVsList: function (limit, from, vague) {
 //        let data = `table=songslib&keyname=songname&queryfiles=songname,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
         var self = this
-        const data = `limit=${limit}&from=${from}&keyvalue=${vague}`
-        API.request('post', '/admin/mv/list', data).then(function (res) {
+        const data = `table=mvlib&keyname=mvname&queryfiles=mvid,image,mvname,singername,lang,albumname,publish_ts,play,st&from=${from}&limit=${limit}&keyvalue=${vague}`
+        API.request('post', '/admin/vague/query', data).then(function (res) {
           const Data = res.data.data
           console.log('--------------------------')
           console.log(Data)
           console.log('++++++++++++++++++++++++++++')
-          const mvs = Data.mvs
+          console.log('数据长度' + Data.res.length)
+          const mvs = Data.res
           const TempArray = []
           for (var i = 0; i < mvs.length; i++) {
             const mv = mvs[i]
             const temp = {
               image: mvs[i].image,
-              lists: [mv.mvname, mv.singername, mv.lang, mv.albumname, mv.create_ts, mv.play, '是'],
+              lists: [mv.mvname, mv.singername, mv.lang, mv.albumname, mv.publish_ts, mv.play, '是'],
               id: mvs[i].mvid
             }
             TempArray[i] = temp
