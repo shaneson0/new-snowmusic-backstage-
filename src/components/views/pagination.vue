@@ -1,7 +1,4 @@
-
-
 <template>
-
 
 
   <div class="col-md-12">
@@ -11,7 +8,8 @@
 
         <div class="box-tools">
           <div class="input-group input-group-sm pull-right" style="width: 150px">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" v-model="searchvalue"/>
+            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
+                   v-model="searchvalue"/>
             <div class="input-group-btn">
               <button type="submit" class="btn btn-default" v-on:click="searchfunction">
                 <i class="fa fa-search"></i>
@@ -28,7 +26,7 @@
         </div>
       </div>
 
-      <div class="box-body table-responsive no-padding" >
+      <div class="box-body table-responsive no-padding">
         <table class="table table-hover" aria-describedby="example1_info" role="grid">
           <thead>
           <tr role="row">
@@ -44,7 +42,7 @@
             <td v-if="value.image">
               <div class="user-panel">
                 <div class="pull-left image">
-                  <img v-bind:src="value.image"  width="25px" height="25px">
+                  <img v-bind:src="value.image" width="25px" height="25px">
                 </div>
               </div>
             </td>
@@ -59,10 +57,12 @@
 
             <td>
               <div class="col-md-3 col-sm-4">
-                <i class="fa fa-fw fa-eye"></i>
+                <router-link :to="{ path: DetailRoute, query: { editid: value.id }}"><i class="fa fa-fw fa-eye"></i>
+                </router-link>
               </div>
               <div class="col-md-3 col-sm-4">
-                <router-link :to="{ path: EditRoute , query: { editid: value.id } }"><i class="fa fa-fw fa-edit"></i></router-link>
+                <router-link :to="{ path: EditRoute , query: { editid: value.id } }"><i class="fa fa-fw fa-edit"></i>
+                </router-link>
                 <!--<router-link :to="EditRoute"><i class="fa fa-fw fa-edit"></i></router-link>-->
               </div>
               <div class="col-md-3 col-sm-4"><i class="fa fa-fw fa-trash-o"></i></div>
@@ -75,14 +75,14 @@
       </div>
 
       <div class="col-md-12">
-        <ul class="pagination pull-right" >
-        <!--<ul >-->
-          <li><a  v-on:click="changePage(prepage)">&laquo;</a></li>
+        <ul class="pagination pull-right">
+          <!--<ul >-->
+          <li><a v-on:click="changePage(prepage)">&laquo;</a></li>
           <li v-for="page1 in pagearray">
             <!--{{page1}}-->
             <a v-on:click="changePage(page1)">{{page1}}</a>
           </li>
-          <li><a  v-on:click="changePage(nextpage)">&raquo;</a></li>
+          <li><a v-on:click="changePage(nextpage)">&raquo;</a></li>
         </ul>
       </div>
 
@@ -99,13 +99,14 @@
 
 
 <script>
-  export default{
+  export default {
     name: 'pagenation',
     props: {
       hasimage1: Number,
       keys1: Array,
       values1: Array,
-      EditRoute: { default: '/' }
+      EditRoute: {default: '/'},
+      DetailRoute: {default: '/'}
     },
     data: function () {
       return {
