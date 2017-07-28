@@ -52,17 +52,17 @@
     <!--排行榜-->
     <li class="header" >排行榜</li>
     <li class=" pageLink" v-on:click="toggleMenu">
-      <router-link to="/Manager"><i class="fa fa-table"></i>
+      <router-link to="/rank"><i class="fa fa-table"></i>
         <span class="page">精选榜</span>
       </router-link>
     </li>
     <li class=" pageLink" v-on:click="toggleMenu">
-      <router-link to="/"><i class="fa fa-table"></i>
+      <router-link to="/rank"><i class="fa fa-table"></i>
         <span class="page">热门榜</span>
       </router-link>
     </li>
     <li class=" pageLink" v-on:click="toggleMenu">
-      <router-link to="/"><i class="fa fa-table"></i>
+      <router-link to="/rank"><i class="fa fa-table"></i>
         <span class="page">最新版</span>
       </router-link>
     </li>
