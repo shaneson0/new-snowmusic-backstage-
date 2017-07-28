@@ -2,14 +2,13 @@
   <!-- Main content -->
   <div class="row center-block">
     <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values"></pagenation>
+    <div class="col-md-12">
+      <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
+      <router-link to="/updateAlbum">
+        <button type="submit" class="btn btn-primary pull-right">增加专辑</button>
+      </router-link>
+    </div>
   </div>
-
-
-
-
-
-
-
 </template>
 
 <script>
@@ -67,7 +66,6 @@
 
   @import url('/static/js/plugins/datatables/jquery.dataTables.min.css');
   */
-
   @import url('/static/js/plugins/datatables/dataTables.bootstrap.css');
 
   table.dataTable thead .sorting:after,
