@@ -2,18 +2,17 @@
   <!-- Main content -->
 
 
-
   <div class="row center-block">
 
-    <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values"></pagenation>
+    <pagenation :hasimage1="hasimage" :keys1="keys" :EditRoute='editRoute' :DetailRoute="detailRoute"
+                v-on:searchfunction="searchfunction1" v-on:changePage="changepage1" :values1="values"></pagenation>
+    <div class="col-md-12">
+      <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
+      <router-link to="/updateSinger">
+        <button type="submit" class="btn btn-primary pull-right">增加歌手</button>
+      </router-link>
+    </div>
   </div>
-
-
-
-
-
-
-
 
 
 </template>
@@ -33,28 +32,42 @@
       return {
         hasimage: 1,
         keys: ['名字', '类型', '语系', '歌曲数', '专辑数', 'MV数', '关注数', '操作'],
-        values: []
+        values: [],
+        editRoute: '/updateSinger',
+        detailRoute: '/singerDetail'
+      }
+    },
+    methods: {
+      changepage1: function (from) {
+        this.getSingerList(10, from, '')
+      },
+      searchfunction1: function (Msg) {
+        this.getSingerList(10, 0, Msg)
+      },
+      getSingerList: function (limit, from, vague) {
+        var self = this
+        const data = `&from=${from}&limit=${limit}&keyvalue=${vague}`
+        API.request('post', '/admin/singer/list', data).then(function (res) {
+          const Data = res.data.data
+          const lists = Data.list
+          const TempArray = []
+          console.log('歌手信息：-----------------------')
+          console.log(lists)
+          for (var i = 0; i < lists.length; i++) {
+            const singer = lists[i]
+            const temp = {
+              image: singer.image,
+              lists: [singer.singername, singer.type, singer.lang, 10, 10, 10, 10],
+              id: singer.singerid
+            }
+            TempArray[i] = temp
+          }
+          self.values = TempArray
+        })
       }
     },
     created: function () {
-      console.log('Hello')
-      var self = this
-      const data = 'limit=10'
-      API.request('post', '/admin/singer/list', data).then(function (res) {
-        const Data = res.data.data
-        const lists = Data.list
-        const TempArray = []
-        for (var i = 0; i < lists.length; i++) {
-          const singer = lists[i]
-          const temp = {
-            image: lists[i].image,
-            lists: [singer.singername, singer.type, singer.lang, 10, 10, 10, 10]
-          }
-          TempArray[i] = temp
-        }
-        self.values = TempArray
-      })
-      console.log('End')
+      this.getSingerList(10, 0, '')
     },
     mounted () {
       this.$nextTick(() => {
@@ -72,7 +85,6 @@
 
   @import url('/static/js/plugins/datatables/jquery.dataTables.min.css');
   */
-
   @import url('/static/js/plugins/datatables/dataTables.bootstrap.css');
 
   table.dataTable thead .sorting:after,
