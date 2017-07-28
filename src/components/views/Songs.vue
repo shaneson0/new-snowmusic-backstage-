@@ -5,7 +5,7 @@
 
 
     <div class="row">
-      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :EditRoute='editRoute' v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
+      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :DetailRoute="detailRoute" :EditRoute='editRoute' v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
       <div class="col-md-12">
         <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
         <router-link to="/updateSong"><button type="submit" class="btn btn-primary pull-right">增加歌曲</button></router-link>
@@ -36,7 +36,8 @@
         hasimage: 1,
         keys: ['名字', '类型', '语系', '歌手', '专辑', '品质', '单价', '操作'],
         values: [],
-        editRoute: '/updateSong'
+        editRoute: '/updateSong',
+        detailRoute: '/songDetail'
       }
     },
     created: function () {
