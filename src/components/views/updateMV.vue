@@ -83,7 +83,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>文件</label>
-              <small>（需要按照MV名上传之后才可以选择<strong style="color: red">提示:上传此项必选文件</strong>）</small>
+              <small>（需要按照MV名上传之后才可以选择<strong style="color: red">提示:上传时此项必选文件</strong>）</small>
               <select class="form-control select2 select2-hidden-accessible" v-model="MVPath">
                 <option v-for="option in MVs_options" v-bind:value="option.value">
                   {{ option.text }}
@@ -94,7 +94,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>封面</label>
-              <small>（需要按照MV名上传之后才可以选择<strong style="color: red">提示:上传此项必选文件</strong>)</small>
+              <small>（需要按照MV名上传之后才可以选择<strong style="color: red">提示:上传时此项必选文件</strong>)</small>
               <select class="form-control select2 select2-hidden-accessible" v-model="SongImage">
                 <!--Image_options-->
                 <option v-for="option in Image_options" v-bind:value="option.value">
