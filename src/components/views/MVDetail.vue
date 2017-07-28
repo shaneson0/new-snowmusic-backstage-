@@ -45,24 +45,24 @@
       <div class="row">
         <p class="col-md-12">添加时间：{{MVInfo.create_ts}}</p>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <li>
-            <i class="fa fa-video-camera bg-maroon"></i>
-            <div class="timeline-item">
-              <h3 class="timeline-header">{{MVInfo.mvname}}</h3>
+      <!--<div class="row">-->
+        <!--<div class="col-md-8">-->
+          <!--<li>-->
+            <!--<i class="fa fa-video-camera bg-maroon"></i>-->
+            <!--<div class="timeline-item">-->
+              <!--<h3 class="timeline-header">{{MVInfo.mvname}}</h3>-->
 
-              <div class="timeline-body">
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item html5-video-player unstarted-mode" :src="MVInfo.url"
-                          frameborder="0"
-                          allowfullscreen=""></iframe>
-                </div>
-              </div>
-            </div>
-          </li>
-        </div>
-      </div>
+              <!--<div class="timeline-body">-->
+                <!--<div class="embed-responsive embed-responsive-16by9">-->
+                  <!--<iframe class="embed-responsive-item html5-video-player unstarted-mode" :src="MVInfo.url"-->
+                          <!--frameborder="0"-->
+                          <!--allowfullscreen=""></iframe>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
