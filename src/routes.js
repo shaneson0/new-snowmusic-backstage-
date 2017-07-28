@@ -24,6 +24,8 @@ import albumDetailView from './components/views/albumDetail.vue'
 import MVDetailView from './components/views/MVDetail.vue'
 import songDetailView from './components/views/songDetail.vue'
 import rankView from './components/views/rank.vue'
+import updateSingerView from './components/views/updateSinger.vue'
+import updateAlbumView from './components/views/updateAlbum.vue'
 
 // Routes
 const routes = [
@@ -127,6 +129,14 @@ const routes = [
         path: 'rank',
         component: rankView,
         name: 'rank'
+      }, {
+        path: 'updateSinger',
+        component: updateSingerView,
+        name: 'updateSinger'
+      }, {
+        path: 'updateAlbum',
+        component: updateAlbumView,
+        name: 'updateAlbum'
       }
     ]
   }, {
