@@ -20,7 +20,7 @@
       <div class="input-group input-group-sm" style="width: 80%; margin-bottom: 10px;">
         <input type="text" name="table_search" class="form-control" placeholder="Search"/>
         <div class="input-group-btn">
-          <button type="submit" class="btn">
+          <button type="submit" class="btn btn-info">
             <i class="fa fa-search"></i>
           </button>
         </div>
