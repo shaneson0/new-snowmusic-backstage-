@@ -33,15 +33,16 @@
       }
     },
     methods: {
-      changepage1: function () {
-        this.getAlbumList()
+      changepage1: function (from) {
+        this.getAlbumList(10, from, '')
       },
-      searchfunction1: function () {
-        this.getAlbumList()
+      searchfunction1: function (msg) {
+        this.getAlbumList(10, 0, msg)
       },
-      getAlbumList: function () {
+      getAlbumList: function (limit, from, msg) {
+        //        let data = `table=songslib&keyname=songname&queryfiles=songname,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
         var self = this
-        const data = 'limit=10'
+        const data = `limit=${limit}&from=${from}&msg=${msg}`
         API.request('post', '/admin/album/list', data).then(function (res) {
           const Data = res.data.data
           self.AllNum1 = Data.all
@@ -63,7 +64,7 @@
       }
     },
     created: function () {
-      this.getAlbumList()
+      this.getAlbumList(10, 0, '')
     },
     mounted () {
       this.$nextTick(() => {
