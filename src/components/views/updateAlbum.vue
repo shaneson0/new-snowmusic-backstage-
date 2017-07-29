@@ -62,7 +62,7 @@
               <label>添加歌曲到专辑</label>
               <div class="list-group" style="height: 200px; overflow: auto;">
                 <div class="list-group-item list-group-item-text">
-                  <input type="checkbox" :value="testv" v-model="test" @click="show()"/>歌曲1
+                  <input type="checkbox" :value="testv" ref="select" :id="1" v-model="test" @click="addSong(index)"/>歌曲1
                 </div>
                 <div class="list-group-item list-group-item-text">
                   <input type="checkbox" :value="testv" v-model="test" @click="show()"/>歌曲2
@@ -119,6 +119,9 @@
     methods: {
       show: function () {
         alert(this.testv)
+      },
+      addSong: function (index) {
+        alert(this.$refs['select'].id)
       }
     }
   }
