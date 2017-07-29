@@ -5,17 +5,21 @@
 
 
     <div class="row">
-      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :DetailRoute="detailRoute" :EditRoute='editRoute' v-on:searchfunction="searchfunction1" v-on:changePage="changepage1"></pagenation>
+      <pagenation :hasimage1="hasimage" :keys1="keys" :values1="values" :DetailRoute="detailRoute"
+                  :EditRoute='editRoute' v-on:searchfunction="searchfunction1"
+                  v-on:changePage="changepage1"></pagenation>
       <div class="col-md-12">
         <!--<router-link to="/updateSong"><i class="fa fa-fw fa-edit"></i></router-link>-->
-        <router-link to="/updateSong"><button type="submit" class="btn btn-primary pull-right">增加歌曲</button></router-link>
+        <router-link to="/updateSong">
+          <button type="submit" class="btn btn-primary pull-right">增加歌曲</button>
+        </router-link>
       </div>
     </div>
 
   </div>
 
 
-<!--<button-counter v-on:increment="incrementTotal"></button-counter>-->
+  <!--<button-counter v-on:increment="incrementTotal"></button-counter>-->
 
 
 </template>
@@ -57,7 +61,7 @@
         this.getSongsList(10, Msg, 0)
       },
       getSongsList: function (limit, vague, from) {
-        let data = `table=songslib&keyname=songname&queryfiles=songname,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
+        let data = `table=songslib&keyname=songname&queryfiles=songname,lyrics,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
         console.log(data)
         var self = this
         API.request('post', '/admin/vague/query', data).then(function (res) {
@@ -91,7 +95,6 @@
 
   @import url('/static/js/plugins/datatables/jquery.dataTables.min.css');
   */
-
   @import url('/static/js/plugins/datatables/dataTables.bootstrap.css');
 
   table.dataTable thead .sorting:after,
