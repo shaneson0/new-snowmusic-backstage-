@@ -113,21 +113,27 @@
 </template>
 
 <script>
+//  import * as API from '../../api/index.js'
+
   export default {
-    name: 'songDetail'
+    name: 'songDetail',
+    methods: {},
+    created: function () {
+    }
   }
 </script>
 
 <style>
-  .my-main-container{
+  .my-main-container {
     margin: 0 auto;
     padding: 20px;
   }
-  .my-singer-info p{
+
+  .my-singer-info p {
     margin-top: 15px;
   }
 
-  .quality-box .quailty-info{
+  .quality-box .quailty-info {
     padding: 10px;
     margin-bottom: 10px;
     width: 80%;
@@ -135,19 +141,19 @@
     color: white;
   }
 
-  .quality-box .quailty-info .song-info{
+  .quality-box .quailty-info .song-info {
     margin-left: 2em;
   }
 
-  .quality-box .quailty-info:first-child{
+  .quality-box .quailty-info:first-child {
     background: deepskyblue;
   }
 
-  .quality-box .quailty-info:nth-child(2){
+  .quality-box .quailty-info:nth-child(2) {
     background: orange;
   }
 
-  .quality-box .quailty-info:nth-child(3){
+  .quality-box .quailty-info:nth-child(3) {
     background: red;
   }
 
