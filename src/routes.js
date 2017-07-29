@@ -23,9 +23,11 @@ import singerDetailView from './components/views/singerDetail.vue'
 import albumDetailView from './components/views/albumDetail.vue'
 import MVDetailView from './components/views/MVDetail.vue'
 import songDetailView from './components/views/songDetail.vue'
-import rankView from './components/views/rank.vue'
 import updateSingerView from './components/views/updateSinger.vue'
 import updateAlbumView from './components/views/updateAlbum.vue'
+import newSongsRankView from './components/views/newSongsRank.vue'
+import selectedRankView from './components/views/selectedRank.vue'
+import hotSongsRankView from './components/views/hotSongsRank.vue'
 
 // Routes
 const routes = [
@@ -126,9 +128,9 @@ const routes = [
         component: songDetailView,
         name: 'songDetail'
       }, {
-        path: 'rank',
-        component: rankView,
-        name: 'rank'
+        path: 'newSongsRank',
+        component: newSongsRankView,
+        name: 'newSongsRank'
       }, {
         path: 'updateSinger',
         component: updateSingerView,
@@ -137,6 +139,14 @@ const routes = [
         path: 'updateAlbum',
         component: updateAlbumView,
         name: 'updateAlbum'
+      }, {
+        path: 'selectedRank',
+        component: selectedRankView,
+        name: 'selectedRank'
+      }, {
+        path: 'hotSongsRank',
+        component: hotSongsRankView,
+        name: 'hotSongsRank'
       }
     ]
   }, {
