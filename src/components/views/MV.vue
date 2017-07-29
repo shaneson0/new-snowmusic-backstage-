@@ -42,7 +42,6 @@
         this.getMVsList(10, 0, Msg)
       },
       getMVsList: function (limit, from, vague) {
-//        let data = `table=songslib&keyname=songname&queryfiles=songname,type,lang,singername,albumname,price,image,songid&from=${from}&limit=${limit}&keyvalue=${vague}`
         var self = this
         const data = `table=mvlib&keyname=mvname&queryfiles=mvid,image,mvname,singername,lang,albumname,publish_ts,play,st&from=${from}&limit=${limit}&keyvalue=${vague}`
         API.request('post', '/admin/vague/query', data).then(function (res) {
